@@ -1,13 +1,16 @@
-import React from "react"
+import user from "../images/user.png"
 
-const ContactCard = ({ contacts }) => {
+const ContactCard = ({ contact }) => {
+  const { id, firstName, lastName, email } = contact
+
   return (
-    <div key={contact.id} className="item">
+    <div className="item">
+      <img className="ui avatar image" src={user} />
       <div className="content">
         <div className="header">
-          {contact.firstName} {contact.lastName}
+          {firstName} {lastName}
         </div>
-        <div>{contact.email}</div>
+        <div>{email}</div>
       </div>
       <i
         className="trash alternate outline icon"
