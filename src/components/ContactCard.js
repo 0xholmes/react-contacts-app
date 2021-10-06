@@ -1,11 +1,11 @@
 import user from "../images/user.png"
 
 const ContactCard = ({ contact }) => {
-  const { id, firstName, lastName, email } = contact
+  const { firstName, lastName, email } = contact
 
   return (
     <div className="item">
-      <img className="ui avatar image" src={user} />
+      <img className="ui avatar image" src={user} alt="user" />
       <div className="content">
         <div className="header">
           {firstName} {lastName}

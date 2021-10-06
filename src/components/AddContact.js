@@ -1,9 +1,19 @@
 import React, { useState } from "react"
 
-const AddContact = () => {
+const AddContact = ({ addContactHandler }) => {
+  const state = {
+    firstName: "",
+    lastName: "",
+    email: "",
+  }
+
   const [firstName, setFirstName] = useState("")
   const [lastName, setLastName] = useState("")
   const [email, setEmail] = useState("")
+
+  state.firstName = firstName
+  state.lastName = lastName
+  state.email = email
 
   const add = e => {
     e.preventDefault()
@@ -12,7 +22,10 @@ const AddContact = () => {
       alert("All the fields are mandatory")
     }
 
-    console.log(firstName, lastName, email)
+    addContactHandler(state)
+    setFirstName("")
+    setLastName("")
+    setEmail("")
   }
 
   return (
