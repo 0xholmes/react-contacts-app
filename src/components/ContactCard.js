@@ -1,7 +1,7 @@
 import user from "../images/user.png"
 
-const ContactCard = ({ contact }) => {
-  const { firstName, lastName, email } = contact
+const ContactCard = ({ contact, deleteContacts }) => {
+  const { firstName, lastName, email, id } = contact
 
   return (
     <div className="item">
@@ -15,6 +15,7 @@ const ContactCard = ({ contact }) => {
       <i
         className="trash alternate outline icon"
         style={{ color: "red", marginTop: "7px" }}
+        onClick={() => deleteContacts(id)}
       ></i>
     </div>
   )

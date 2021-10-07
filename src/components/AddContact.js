@@ -1,6 +1,9 @@
 import React, { useState } from "react"
+import { useHistory } from "react-router-dom"
 
-const AddContact = ({ addContactHandler }) => {
+const AddContact = ({ addContacts }) => {
+  let history = useHistory()
+
   const state = {
     firstName: "",
     lastName: "",
@@ -20,16 +23,19 @@ const AddContact = ({ addContactHandler }) => {
 
     if (firstName === "" || lastName === "" || email === "") {
       alert("All the fields are mandatory")
+      return
     }
 
-    addContactHandler(state)
+    addContacts(state)
     setFirstName("")
     setLastName("")
     setEmail("")
+
+    history.push("/")
   }
 
   return (
-    <div className="ui main">
+    <div className="ui main" style={{ margin: "5em" }}>
       <h2>Add Contact</h2>
 
       <form className="ui form" onSubmit={add}>
