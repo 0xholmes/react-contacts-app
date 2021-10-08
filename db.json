@@ -1,0 +1,25 @@
+{
+    "contacts": [
+        {
+            "firstName":"Steve",
+            "lastName":"Robles",
+            "email":"steve@btc.com","id":"54cf3879-e522-4903-a54b-90b70fe912d3"
+        },
+        {
+            "firstName":"Elon",
+            "lastName":"Musk",
+            "email":"elon@doge.com","id":"168f7ef3-8d16-4455-80aa-bc317d3c0e5f"
+        
+        },
+        {
+            "firstName":"Floki",
+            "lastName":"Dog",
+            "email":"floki@floki.com","id":"3a3283a0-613a-4bf7-a0c0-cd7154186712"
+        },
+        {
+            "firstName":"Jake",
+            "lastName":"Paul",
+            "email":"jake@pokemon.com","id":"659e2bfb-6256-4f88-971c-6c642be7f152"
+        }	
+    ]
+}
