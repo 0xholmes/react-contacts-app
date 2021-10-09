@@ -12,6 +12,8 @@ import ContactDetail from "./components/ContactDetail"
 const App = () => {
   // const LOCAL_STORAGE_KEY = "contacts"
   const [contacts, setContacts] = useState([])
+  const [searchTerm, setSearchTerm] = useState("")
+  const [searchResults, setSearchResults] = useState([])
 
   const retrieveContacts = async () => {
     const res = await api.get("/contacts")
@@ -47,6 +49,22 @@ const App = () => {
     setContacts(newContactList)
   }
 
+  const searchHandler = searchTerm => {
+    setSearchTerm(searchTerm)
+
+    if (searchTerm !== "") {
+      const newContactList = contacts.filter(contact => {
+        return Object.values(contact)
+          .join(" ")
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase())
+      })
+      setSearchResults(newContactList)
+    } else {
+      setSearchResults(contacts)
+    }
+  }
+
   useEffect(() => {
     // const retrieveContacts = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY))
     // if (retrieveContacts) setContacts(retrieveContacts)
@@ -71,12 +89,20 @@ const App = () => {
           <Route path="/add">
             <AddContact addContacts={addContacts} />
           </Route>
+
           <Route path="/edit">
             <EditContact updateContacts={updateContacts} />
           </Route>
+
           <Route path="/" exact>
-            <ContactList contacts={contacts} getContactId={removeContacts} />
+            <ContactList
+              contacts={searchTerm.length < 1 ? contacts : searchResults}
+              getContactId={removeContacts}
+              searchTerm={searchTerm}
+              searchKeyword={searchHandler}
+            />
           </Route>
+
           <Route path="/contact/:id">
             <ContactDetail />
           </Route>
