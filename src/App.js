@@ -5,6 +5,7 @@ import api from "./api/contacts"
 import "./App.css"
 import Header from "./components/Header"
 import AddContact from "./components/AddContact"
+import EditContact from "./components/EditContact"
 import ContactList from "./components/ContactList"
 import ContactDetail from "./components/ContactDetail"
 
@@ -17,11 +18,29 @@ const App = () => {
     return res.data
   }
 
-  const addContacts = contact => {
-    setContacts([...contacts, { ...contact, id: uuid() }])
+  const addContacts = async contact => {
+    const request = {
+      id: uuid(),
+      ...contact,
+    }
+
+    const res = await api.post("/contacts", request)
+    setContacts([...contacts, res.data])
   }
 
-  const removeContacts = id => {
+  const updateContacts = async contact => {
+    const res = await api.put(`/contacts/${contact.id}`, contact)
+
+    const { id } = res.data
+    setContacts(
+      contacts.map(contact => {
+        return contact.id === id ? res.data : contact
+      })
+    )
+  }
+
+  const removeContacts = async id => {
+    await api.delete(`/contacts/${id}`)
     const newContactList = contacts.filter(contact => {
       return contact.id !== id
     })
@@ -51,6 +70,9 @@ const App = () => {
         <Switch>
           <Route path="/add">
             <AddContact addContacts={addContacts} />
+          </Route>
+          <Route path="/edit">
+            <EditContact updateContacts={updateContacts} />
           </Route>
           <Route path="/" exact>
             <ContactList contacts={contacts} getContactId={removeContacts} />

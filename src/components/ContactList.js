@@ -2,14 +2,14 @@ import ContactCard from "./ContactCard"
 import { Link } from "react-router-dom"
 
 const ContactList = ({ contacts, getContactId }) => {
-  const deleteContacts = id => {
+  const clickHandler = id => {
     getContactId(id)
   }
 
   const renderContacts = contacts.map(contact => (
     <ContactCard
       contact={contact}
-      deleteContacts={deleteContacts}
+      clickHandler={clickHandler}
       key={contact.id}
     />
   ))
