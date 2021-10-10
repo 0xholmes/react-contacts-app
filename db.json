@@ -25,16 +25,34 @@
       "id": "944ea6a2-fc61-4bdd-9db4-8482ee235d25"
     },
     {
-      "firstName": "John",
-      "lastName": "Doe",
-      "email": "john@jdcapital.com",
-      "id": "e74fe020-6c91-4fd1-9a43-dc7e93bf9d73"
-    },
-    {
       "id": "058b5b12-9ace-40a1-8a43-465d29183f20",
       "firstName": "Jake",
       "lastName": "Paul",
       "email": "jp@jakepaul.com"
+    },
+    {
+      "firstName": "George",
+      "lastName": "Washington",
+      "email": "george@cryptorus.com",
+      "id": "65b1295a-1dab-45d3-94ee-2835467956b9"
+    },
+    {
+      "id": "559a0624-1e3c-452c-9e53-0cd24a165020",
+      "firstName": "JRNY",
+      "lastName": "Crypto",
+      "email": "jrny@jrnycrypto.com"
+    },
+    {
+      "id": "fb425ee2-eda8-437f-9802-a8aad3bba17d",
+      "firstName": "Mark",
+      "lastName": "Zuckerberg",
+      "email": "mark@facebook.com"
+    },
+    {
+      "id": "ec2d3977-0aae-4b6a-af54-e7225d78783c",
+      "firstName": "Gavin",
+      "lastName": "Wood",
+      "email": "gavin@polkadot.com"
     }
   ]
 }

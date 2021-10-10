@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
-import { uuid } from "uuidv4"
+import { v4 as uuidv4 } from "uuid"
 import api from "./api/contacts"
 import "./App.css"
 import Header from "./components/Header"
@@ -22,7 +22,7 @@ const App = () => {
 
   const addContacts = async contact => {
     const request = {
-      id: uuid(),
+      id: uuidv4(),
       ...contact,
     }
 
@@ -66,9 +66,6 @@ const App = () => {
   }
 
   useEffect(() => {
-    // const retrieveContacts = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY))
-    // if (retrieveContacts) setContacts(retrieveContacts)
-
     const getAllContacts = async () => {
       const allContacts = await retrieveContacts()
       if (allContacts) setContacts(allContacts)
@@ -76,10 +73,6 @@ const App = () => {
 
     getAllContacts()
   }, [])
-
-  useEffect(() => {
-    // localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(contacts))
-  }, [contacts])
 
   return (
     <Router>
